@@ -6,6 +6,7 @@ root = tk.Tk()
 root.title("Fact Of The Day")
 root.geometry("400x300")
 
+#Create the facts list
 with open("facts.txt", "r") as f:
     facts = [line.strip() for line in f.readlines()]
 

@@ -1,28 +1,42 @@
-import tkinter as tk
+
+import customtkinter as ctk
 import random
 
-# Create the main window
-root = tk.Tk()
-root.title("Fact Of The Day")
-root.geometry("400x300")
+#Apperarance
+ctk.set_appearance_mode("light")     
+ctk.set_default_color_theme("green")
 
-#Create the facts list
+# Create the main window
+root = ctk.CTk()
+root.title("Fact Of The Day")
+root.geometry("600x300")
+
+#Read the facts file
 with open("facts.txt", "r") as f:
     facts = [line.strip() for line in f.readlines()]
 
+
 # Create a label widget
-label = tk.Label(root, text="My New Fact Is")
-label.pack(pady=20) # Pack the label into the window
+label = ctk.CTkLabel(root,
+                      text="My New Fact Is",
+                      font=("MS Serif",20))
+label.pack(pady=20) 
 
 
 # Create a button widget
 def on_button_click():
     fact=random.choice(facts)
-    label.config(text=fact)
+    label.configure(text=fact)
     button.pack_forget()
 
 
-button = tk.Button(root, text="Click To Learn", command=on_button_click)
+button = ctk.CTkButton(root, 
+                       text="Click To Learn",
+                       font=("MS Serif",20),
+                       command=on_button_click,
+                       width=200,
+                       height=40,
+                       corner_radius=15)
 button.pack()
 
 # Start the main event loop
